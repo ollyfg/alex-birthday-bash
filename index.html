@@ -1,8 +1,142 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
   <head>
+    <meta charset="utf-8" />
     <title>Alex's Big Birthday Bash!</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: row;
+      }
+      .card {
+        opacity: 1;
+        transition: 0.25s;
+        padding: 3rem;
+        margin: 1rem auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid #dddada;
+        border-radius: 5px;
+        box-shadow: 0px 12px 9px -8px rgba(0, 0, 0, 0.5);
+        -webkit-box-shadow: 0px 12px 9px -8px rgba(0, 0, 0, 0.5);
+      }
+      .welcome {
+        margin-bottom: 2rem;
+        font-size: 150%;
+      }
+      .word {
+        font-size: 200%;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        padding: 0.5rem 2rem 0.3rem 2rem;
+        background-color: #d6edff;
+        border: 1px dashed #2196f3;
+        border-radius: 5px;
+      }
+      .buttons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      button {
+        position: relative;
+        overflow: hidden;
+        color: #2196f3;
+        border-color: #2196f3;
+        background: transparent;
+        padding: 10px 20px;
+        border-radius: 6px;
+        border-width: 2px;
+        border-style: solid;
+        font-size: 110%;
+        cursor: pointer;
+        transition: 0.25s ease;
+        -webkit-appearance: button;
+        text-transform: none;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button:first-child {
+        margin-right: 2rem;
+      }
+      button > span {
+        position: relative;
+        z-index: 1;
+      }
+      button:hover {
+        color: #fff;
+      }
+      button::after {
+        transform: rotate(-25deg);
+        top: -100%;
+        left: -190%;
+        content: "";
+        position: absolute;
+        background: #2196f3;
+        width: 150%;
+        padding-top: 150%;
+        transition: 0.25s ease;
+      }
+      button:hover::after {
+        left: -30%;
+      }
+    </style>
+    <script>
+      const words = [
+        "piano",
+        "fishing",
+        "climate",
+        "pizza",
+        "theory",
+        "coffee",
+        "customer",
+        "conversation",
+        "potato",
+        "midnight",
+        "dirt",
+        "video",
+        "hearing",
+        "freedom",
+        "committee",
+        "insect",
+        "examination",
+        "year",
+        "virus",
+        "ladder",
+      ];
+
+      // Select a random word and display it
+      function pickWord() {
+        const idx = parseInt(Math.random() * words.length);
+        const word = words[idx];
+        document.querySelector(".word").innerHTML =
+          word[0].toUpperCase() + word.slice(1);
+      }
+
+      // Hide everything
+      function hideAll() {
+        document.querySelector(".card").style.opacity = 0;
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        pickWord();
+      });
+    </script>
   </head>
   <body>
-    <div style="font-size: 500%;">🎉</div>
+    <div class="card">
+      <div class="welcome">Welcome!</div>
+      <div>Your word is:</div>
+      <div class="word"></div>
+      <div class="buttons">
+        <button onclick="hideAll()">
+          <span>I'll go with that!</span>
+        </button>
+        <button onclick="pickWord()"><span>Pick another one</span></button>
+      </div>
+    </div>
   </body>
 </html>
